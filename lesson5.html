@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chessboard</title>
+</head>
+
+<body>
+
+    <script>
+        function chessboard() {
+            var newTable = document.createElement('table');
+            newTable.style.padding = '100px 300px';
+
+            var columnName = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ''];
+            var blackFigures = ['8', '&#9820;', '&#9822;', '&#9821;', '&#9819;', '&#9818;', '&#9821;', '&#9822;',
+                '&#9820;', '8'
+            ];
+            var blackFiguresPawn = ['7', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;', '&#9823;',
+                '&#9823;',
+                '&#9823;', '7'
+            ];
+            var whiteFigures = ['1', '&#9814;', '&#9816;', '&#9815;', '&#9813;', '&#9812;', '&#9815;',
+                '&#9816;',
+                '&#9814;', '1'
+            ];
+
+            var whiteFiguresPawn = ['2', '&#9817;', '&#9817;', '&#9817;', '&#9817;', '&#9817;',
+                '&#9817;', '&#9817;',
+                '&#9817;', '2'
+            ];
+            //blackFiguresPawn[blackFiguresPawn.length - 1].style.transform = 'rotate(180deg)';
+            for (var i = 0, k = 9; i < 10, k >= 0; i++, k--) {
+                var newTr = newTable.insertRow(i);
+                for (var j = 0; j < 10; j++) {
+                    var newTd = newTr.insertCell(j);
+                    switch (i) {
+                        case 0:
+                            newTd.innerText = columnName[j];
+                            break;
+                        case 1:
+                            newTd.innerHTML = blackFigures[j];
+                            break;
+                        case 2:
+                            newTd.innerHTML = blackFiguresPawn[j];
+                            break;
+                        case 7:
+                            newTd.innerHTML = whiteFiguresPawn[j];
+                            break;
+                        case 8:
+                            newTd.innerHTML = whiteFigures[j];
+                            break;
+                        case 9:
+                            newTd.innerText = columnName[j];
+                            break;
+                        default:
+                            if (j === 0 || j === 9) {
+                                newTd.innerHTML = k;
+                            }
+                            break;
+                    }
+                }
+            }
+            document.body.appendChild(newTable);
+        };
+        chessboard();
+    </script>
+
+</body>
+
+</html>
