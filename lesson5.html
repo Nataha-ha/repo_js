@@ -5,6 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chessboard</title>
+    <style>
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+        }
+
+        td {
+            height: 50px;
+            width: 50px;
+            text-align: center;
+        }
+
+        tr:nth-child(even) td:nth-child(odd) {
+            background: orange;
+        }
+
+        tr:nth-child(odd) td:nth-child(even) {
+            background: orange;
+        }
+
+        tr:last-child td:nth-child(odd),
+        tr:first-child td:nth-child(even) {
+            background: white;
+        }
+
+        tr:nth-child(even) td:first-child {
+            background: white;
+        }
+
+        tr:nth-child(odd) td:last-child {
+            background: white;
+        }
+
+        td:last-child {
+            transform: rotate(180deg);
+        }
+    </style>
+
 </head>
 
 <body>
@@ -12,7 +50,7 @@
     <script>
         function chessboard() {
             var newTable = document.createElement('table');
-            newTable.style.padding = '100px 300px';
+            newTable.style.margin = '100px 300px';
 
             var columnName = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', ''];
             var blackFigures = ['8', '&#9820;', '&#9822;', '&#9821;', '&#9819;', '&#9818;', '&#9821;', '&#9822;',
@@ -31,7 +69,6 @@
                 '&#9817;', '&#9817;',
                 '&#9817;', '2'
             ];
-            //blackFiguresPawn[blackFiguresPawn.length - 1].style.transform = 'rotate(180deg)';
             for (var i = 0, k = 9; i < 10, k >= 0; i++, k--) {
                 var newTr = newTable.insertRow(i);
                 for (var j = 0; j < 10; j++) {
@@ -39,6 +76,7 @@
                     switch (i) {
                         case 0:
                             newTd.innerText = columnName[j];
+                            newTd.style.transform = 'rotate(180deg)';
                             break;
                         case 1:
                             newTd.innerHTML = blackFigures[j];
