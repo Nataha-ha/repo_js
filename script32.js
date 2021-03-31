@@ -26,4 +26,8 @@ function countBasketPrice(items) {
     return sum;
 }
 
-alert(countBasketPrice(basket));
+document.write(countBasketPrice(basket));
+
+var basketRender = document.querySelector('div');
+basketRender.className = 'basket';
+basketRender.innerText = "Корзина пуста";
